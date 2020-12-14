@@ -54,9 +54,9 @@ def main():
             fadeBrightness(value)
         
         
-        t1 = Thread(target=runFade)
-        t1.setDaemon(True)
-        t1.start()
+        #t1 = Thread(target=runFade)
+        #t1.setDaemon(True)
+        #t1.start()
         
     def on_connect(client, userdata, flags, rc):
         client.subscribe("ambilightLamp/#")
