@@ -7,7 +7,7 @@ import board
 from threading import Thread
 
 loop = False #bool for infinite loops
-t1 = Thread(target=runFade)
+t1 = Thread
 def main():
     global loop
     
@@ -98,6 +98,8 @@ def main():
             t1.start()
         
     def on_connect(client, userdata, flags, rc):
+        global t1
+        t1 = Thread(target=runFade)
         client.subscribe("ambilightLamp/#")
         print("MQTT connected")
         print(client)
