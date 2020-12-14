@@ -50,6 +50,17 @@ def main():
         for i in range(len(strip)):
             stripStorage[i] = (float(color[0]),float(color[1]),float(color[2]),stripStorage[i][3],255.0)
         
+    #Rurn off stip
+    def turnOff():
+        for i in range(len(strip)):
+            stripStorage[i] = (float(strip[i[0]]),float(strip[i[1]]),float(strip[i[2]]),float(strip[i[3]]),stripStorage[i][4])
+            strip[i] = (0,0,0,0)
+        strip.show()
+        
+    def dimWhite(white):
+        for i in range(len(strip)):
+            stripStorage[i] = (stripStorage[i][0],stripStorage[i][1],stripStorage[i][2],float(white),stripStorage[i][4])
+        
     def on_message(client, userdata, msg):
         print(msg.topic+" "+str(msg.payload)) #TODO: to be remove for production
         
@@ -64,6 +75,13 @@ def main():
             print(input)
             
             changeColor(input)
+        elif msg.topic == "ambilightLamp/light/set":
+            turnOff()
+        elif msg.topic == "ambilightLamp/set/white":
+            payload = str(msg.payload)[2:]
+            payload = payload[:(len(payload)-1)]
+            
+            dimWhite(float(payload))
         
         
         #t1 = Thread(target=runFade)
