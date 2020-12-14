@@ -29,7 +29,6 @@ def main():
     #FadeLoop
     def runFade():
         global loop
-        loop = False
         while loop:
             print("A")
             time.sleep(1)
