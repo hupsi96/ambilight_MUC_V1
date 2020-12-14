@@ -122,12 +122,11 @@ def main():
         elif msg.topic == "ambilightLamp/set/effect":
             loop = True
             print(loop)
+            t1 = Thread(target=runFade)
+            t1.setDaemon(True)
             t1.start()
         
     def on_connect(client, userdata, flags, rc):
-        global t1
-        t1 = Thread(target=runFade)
-        t1.setDaemon(True)
         client.subscribe("ambilightLamp/#")
         print("MQTT connected")
         print(client)
