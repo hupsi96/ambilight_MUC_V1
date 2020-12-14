@@ -7,7 +7,7 @@ import board
 from threading import Thread
 
 loop = False #bool for infinite loops
-
+t1 = Thread(target=runFade)
 def main():
     global loop
     
@@ -63,9 +63,10 @@ def main():
         
     def on_message(client, userdata, msg):
         global loop
+        global t1
         print(msg.topic+" "+str(msg.payload)) #TODO: to be remove for production
         
-        t1 = Thread(target=runFade)
+        
         t1.setDaemon(True)
         if loop:
             print("killed")
