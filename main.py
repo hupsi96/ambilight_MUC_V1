@@ -60,6 +60,7 @@ def main():
     def dimWhite(white):
         for i in range(len(strip)):
             stripStorage[i] = (stripStorage[i][0],stripStorage[i][1],stripStorage[i][2],float(white),stripStorage[i][4])
+        fadeBrightness(stripStorage[0][4])
         
     def on_message(client, userdata, msg):
         print(msg.topic+" "+str(msg.payload)) #TODO: to be remove for production
