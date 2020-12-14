@@ -66,8 +66,6 @@ def main():
         global t1
         print(msg.topic+" "+str(msg.payload)) #TODO: to be remove for production
         
-        
-        t1.setDaemon(True)
         if loop:
             print("killed")
             loop = False
@@ -100,6 +98,7 @@ def main():
     def on_connect(client, userdata, flags, rc):
         global t1
         t1 = Thread(target=runFade)
+        t1.setDaemon(True)
         client.subscribe("ambilightLamp/#")
         print("MQTT connected")
         print(client)
