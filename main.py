@@ -42,6 +42,7 @@ def main():
             current2 = int((float(current[2])/float(current[4])) * bright)
             strip[i] = (current0,current1,current2,current[3])
             stripStorage[i] = (current0,current1,current2,current[3],bright)
+            print((current0,current1,current2,current[3]))
         strip.show()
             
         
