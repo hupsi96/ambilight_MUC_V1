@@ -50,7 +50,8 @@ def main():
         
         #Set Brightness
         if msg.topic == "ambilightLamp/set/brightness":
-            
+            value = float(msg.payload)
+            fadeBrightness(value)
         
         
         t1 = Thread(target=runFade)
