@@ -29,7 +29,7 @@ def main():
     #FadeLoop
     def runFade():
         global loop
-        loop = True
+        loop = False
         while loop:
             print("A")
             time.sleep(1)
@@ -63,7 +63,14 @@ def main():
         fadeBrightness(stripStorage[0][4])
         
     def on_message(client, userdata, msg):
+        global loop
         print(msg.topic+" "+str(msg.payload)) #TODO: to be remove for production
+        
+        t1 = Thread(target=runFade)
+        t1.setDaemon(True)
+        if loop:
+            loop = False
+            
         
         #Set Brightness
         if msg.topic == "ambilightLamp/set/brightness":
@@ -83,11 +90,8 @@ def main():
             payload = payload[:(len(payload)-1)]
             
             dimWhite(float(payload))
-        
-        
-        #t1 = Thread(target=runFade)
-        #t1.setDaemon(True)
-        #t1.start()
+        elif msg.topic == "ambilightLamp/set/effect":
+            t1.start()
         
     def on_connect(client, userdata, flags, rc):
         client.subscribe("ambilightLamp/#")
