@@ -43,7 +43,7 @@ def main():
                 print("test")
         
         
-        t1 = Thread(target=runFun)
+        t1 = Thread(target=runFade)
         t1.setDaemon(True)
         t1.start()
         
