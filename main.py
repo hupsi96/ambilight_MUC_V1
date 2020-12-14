@@ -69,6 +69,7 @@ def main():
         t1 = Thread(target=runFade)
         t1.setDaemon(True)
         if loop:
+            print("killed")
             loop = False
             t1.join()
             
@@ -93,6 +94,7 @@ def main():
             dimWhite(float(payload))
         elif msg.topic == "ambilightLamp/set/effect":
             loop = True
+            print(loop)
             t1.start()
         
     def on_connect(client, userdata, flags, rc):
