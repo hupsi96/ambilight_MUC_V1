@@ -37,9 +37,9 @@ def main():
     def fadeBrightness(bright):
         for i in range(len(strip)):
             current = stripStorage[i]
-            current0 = int((float(current[0])/float(current[4])) * bright)
-            current1 = int((float(current[1])/float(current[4])) * bright)
-            current2 = int((float(current[2])/float(current[4])) * bright)
+            current0 = int((float(current[0])/float(current[4])) * float(bright))
+            current1 = int((float(current[1])/float(current[4])) * float(bright))
+            current2 = int((float(current[2])/float(current[4])) * float(bright))
             strip[i] = (current0,current1,current2,current[3])
             stripStorage[i] = (current0,current1,current2,current[3],bright)
             print((current0,current1,current2,current[3]))
