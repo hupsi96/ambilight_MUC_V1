@@ -45,6 +45,10 @@ def main():
             stripStorage[i] = (current0,current1,current2,current[3],bright)
         strip.show()
             
+    #change strip color
+    def changeColor(color):
+        for i in range(len(strip)):
+            stripStorage[i] = (float(color[0]),float(color[1]),float(color[2]),stripStorage[i][3],255.0)
         
     def on_message(client, userdata, msg):
         print(msg.topic+" "+str(msg.payload)) #TODO: to be remove for production
@@ -56,7 +60,10 @@ def main():
         elif msg.topic == "ambilightLamp/set/rgb":
             payload = str(msg.payload)[2:]
             payload = payload[:(len(payload)-1)]
-            print(payload)
+            input = tuple(map(int,str(payload).split(',')))
+            print(input)
+            
+            changeColor(input)
         
         
         #t1 = Thread(target=runFade)
