@@ -53,7 +53,7 @@ def main():
     #Rurn off stip
     def turnOff():
         for i in range(len(strip)):
-            stripStorage[i] = (float(strip[i[0]]),float(strip[i[1]]),float(strip[i[2]]),float(strip[i[3]]),stripStorage[i][4])
+            stripStorage[i] = (float(strip[i][0]),float(strip[i][1]),float(strip[i][2]),float(strip[i][3]),stripStorage[i][4])
             strip[i] = (0,0,0,0)
         strip.show()
         
