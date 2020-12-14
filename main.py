@@ -29,7 +29,7 @@ def main():
     #FadeLoop
     def runFade():
         global loop
-        def wheel(self, pos):
+        def wheel(pos):
             # Input a value 0 to 255 to get a color value.
             # The colours are a transition r - g - b - back to r.
             if pos < 0 or pos > 255:
@@ -51,11 +51,11 @@ def main():
             return (r, g, b,0)
     
     
-        def rainbow_cycle(self,wait,strip):
+        def rainbow_cycle(wait):
             for j in range(255):
                 for i in range(len(strip)):
                     pixel_index = (i * 256 // len(strip)) + j
-                    strip[i] = self.wheel(pixel_index & 255)
+                    strip[i] = wheel(pixel_index & 255)
                 strip.show()
                 time.sleep(wait)
         
