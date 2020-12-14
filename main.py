@@ -70,6 +70,7 @@ def main():
         t1.setDaemon(True)
         if loop:
             loop = False
+            t1.join()
             
         
         #Set Brightness
@@ -91,6 +92,7 @@ def main():
             
             dimWhite(float(payload))
         elif msg.topic == "ambilightLamp/set/effect":
+            loop = True
             t1.start()
         
     def on_connect(client, userdata, flags, rc):
