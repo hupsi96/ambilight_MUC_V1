@@ -33,7 +33,8 @@ def main():
         while loop:
             print("A")
             time.sleep(1)
-        
+    
+    #set Brightness on Strip
     def fadeBrightness(bright):
         for i in range(len(strip)):
             current = stripStorage[i]
@@ -42,7 +43,6 @@ def main():
             current2 = (float(current[2])/float(current[4])) * float(bright)
             strip[i] = (int(current0),int(current1),int(current2),int(current[3]))
             stripStorage[i] = (current0,current1,current2,current[3],bright)
-            print((current0,current1,current2,current[3]))
         strip.show()
             
         
@@ -53,6 +53,10 @@ def main():
         if msg.topic == "ambilightLamp/set/brightness":
             value = float(msg.payload)
             fadeBrightness(value)
+        elif msg.topic == "ambilightLamp/set/rgb":
+            payload = str(msg.payload)[2:]
+            payload = payload[:(len(payload)-1)]
+            print(payload)
         
         
         #t1 = Thread(target=runFade)
