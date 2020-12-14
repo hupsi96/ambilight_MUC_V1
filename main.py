@@ -24,7 +24,7 @@ def main():
         pixel_pin, num_pixels, brightness=1, auto_write=False, pixel_order=ORDER
     )
     
-    stripStorage = [(255,63,0,100,255)]*num_pixels #(r,g,b,w,brightness) stores current value of the Strip
+    stripStorage = [(255.0,63.0,0.0,100.0,255.0)]*num_pixels #(r,g,b,w,brightness) stores current value of the Strip
     
     #FadeLoop
     def runFade():
@@ -37,10 +37,10 @@ def main():
     def fadeBrightness(bright):
         for i in range(len(strip)):
             current = stripStorage[i]
-            current0 = int((float(current[0])/float(current[4])) * float(bright))
-            current1 = int((float(current[1])/float(current[4])) * float(bright))
-            current2 = int((float(current[2])/float(current[4])) * float(bright))
-            strip[i] = (current0,current1,current2,current[3])
+            current0 = (float(current[0])/float(current[4])) * float(bright)
+            current1 = (float(current[1])/float(current[4])) * float(bright)
+            current2 = (float(current[2])/float(current[4])) * float(bright)
+            strip[i] = (int(current0),int(current1),int(current2),int(current[3]))
             stripStorage[i] = (current0,current1,current2,current[3],bright)
             print((current0,current1,current2,current[3]))
         strip.show()
