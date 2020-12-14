@@ -34,13 +34,23 @@ def main():
             print("A")
             time.sleep(1)
         
+    def fadeBrightness(bright):
+        for i in range(len(strip)):
+            current = stripStorage[i]
+            current0 = int((float(current[0])/float(current[4])) * bright)
+            current1 = int((float(current[1])/float(current[4])) * bright)
+            current2 = int((float(current[2])/float(current[4])) * bright)
+            strip[i] = (current0,current1,current2,current[3])
+            stripStorage[i] = (current0,current1,current2,current[3],bright)
+        strip.show()
+            
+        
     def on_message(client, userdata, msg):
         print(msg.topic+" "+str(msg.payload)) #TODO: to be remove for production
         
         #Set Brightness
         if msg.topic == "ambilightLamp/set/brightness":
-            for i in range(len(strip)):
-                print("test")
+            
         
         
         t1 = Thread(target=runFade)
