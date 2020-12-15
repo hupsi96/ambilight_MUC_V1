@@ -60,7 +60,7 @@ def main():
                 time.sleep(wait)
         
         while loop:
-            rainbow_cycle(0.003)
+            rainbow_cycle(0.1)
     
     #set Brightness on Strip
     def fadeBrightness(bright):
