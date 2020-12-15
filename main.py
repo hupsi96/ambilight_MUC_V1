@@ -102,24 +102,24 @@ def main():
             
         
         #Set Brightness
-        if msg.topic == "ambilightLamp/set/brightness":
+        if msg.topic == "ambilightLamp2/set/brightness":
             value = float(msg.payload)
             fadeBrightness(value)
-        elif msg.topic == "ambilightLamp/set/rgb":
+        elif msg.topic == "ambilightLamp2/set/rgb":
             payload = str(msg.payload)[2:]
             payload = payload[:(len(payload)-1)]
             input = tuple(map(int,str(payload).split(',')))
             print(input)
             
             changeColor(input)
-        elif msg.topic == "ambilightLamp/light/set":
+        elif msg.topic == "ambilightLamp2/light/set":
             turnOff()
-        elif msg.topic == "ambilightLamp/set/white":
+        elif msg.topic == "ambilightLamp2/set/white":
             payload = str(msg.payload)[2:]
             payload = payload[:(len(payload)-1)]
             
             dimWhite(float(payload))
-        elif msg.topic == "ambilightLamp/set/effect":
+        elif msg.topic == "ambilightLamp2/set/effect":
             loop = True
             print(loop)
             t1 = Thread(target=runFade)
@@ -127,7 +127,7 @@ def main():
             t1.start()
         
     def on_connect(client, userdata, flags, rc):
-        client.subscribe("ambilightLamp/#")
+        client.subscribe("ambilightLamp2/#")
         print("MQTT connected")
         print(client)
     
