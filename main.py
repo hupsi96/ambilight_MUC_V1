@@ -89,10 +89,10 @@ def main():
                 currentCopy[j] = (stripNew[0],stripNew[1],stripNew[2],stripNew[3],stripNew[4])
             strip.show()
             time.sleep(0.01)
-        print("input:")
-        print(input)
-        print("current")
-        print(currentCopy)
+        #print("input:")
+        #print(input)
+        #print("current")
+        #print(currentCopy)
         
     #change strip color
     def changeColor(color):
@@ -126,11 +126,11 @@ def main():
         if msg.topic == "ambilightLamp/set/brightness":
             value = float(msg.payload)
             input = stripStorage
-            print(input)
+            #print(input)
             for i in range(len(input)):
                 input[i] = (input[i][0],input[i][1],input[i][2],input[i][3],value)
-            print(value)
-            print(input)
+            #print(value)
+            #print(input)
             fadeStrip(input)
         elif msg.topic == "ambilightLamp/set/rgb":
             payload = str(msg.payload)[2:]
