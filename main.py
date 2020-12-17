@@ -73,6 +73,23 @@ def main():
             stripStorage[i] = (current0,current1,current2,current[3],bright)
         strip.show()
             
+    def fadeStrip(input):
+        currentCopy = stripStorage
+        for i in range(1,256):
+            for j in range(len(strip)):
+                stripNew = [0.0]*5
+                #print(strip)
+                for k in range(5):
+                    if stripStorage[j][k] > input[j][k]:
+                        stripNew[k] = stripStorage[j][k] - ((stripStorage[j][k] - input[j][k]) / (255.0/float(i)))
+                    else: 
+                        stripNew[k] = stripStorage[j][k] + ((input[j][k] - stripStorage[j][k]) / (255.0/float(i)))
+
+                strip[j] = (int(stripNew[0]*(stripNew[4]/255.0)),int(stripNew[1]*(stripNew[4]/255.0)),int(stripNew[2]*(stripNew[4]/255.0)),int(stripNew[3]*(stripNew[4]/255.0)))
+                currentCopy[j] = (stripNew[0],stripNew[1],stripNew[2],stripNew[3],stripNew[4])
+            strip.show()
+            time.sleep(0.01)
+        
     #change strip color
     def changeColor(color):
         for i in range(len(strip)):
@@ -104,7 +121,10 @@ def main():
         #Set Brightness
         if msg.topic == "ambilightLamp/set/brightness":
             value = float(msg.payload)
-            fadeBrightness(value)
+            input = stripStorage
+            for i in input:
+                i = (i[0],i[0],i[0],i[0],value)
+            fadeStrip(i)
         elif msg.topic == "ambilightLamp/set/rgb":
             payload = str(msg.payload)[2:]
             payload = payload[:(len(payload)-1)]
