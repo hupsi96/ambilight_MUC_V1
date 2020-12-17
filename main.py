@@ -124,7 +124,7 @@ def main():
             input = stripStorage
             for i in input:
                 i = (i[0],i[0],i[0],i[0],value)
-            fadeStrip(i)
+            fadeStrip(input)
         elif msg.topic == "ambilightLamp/set/rgb":
             payload = str(msg.payload)[2:]
             payload = payload[:(len(payload)-1)]
