@@ -89,10 +89,10 @@ def main():
                 currentCopy[j] = (stripNew[0],stripNew[1],stripNew[2],stripNew[3],stripNew[4])
             strip.show()
             time.sleep(0.01)
-        #print("input:")
-        #print(input)
-        #print("current")
-        #print(currentCopy)
+        print("input:")
+        print(input)
+        print("current")
+        print(currentCopy)
         
     #change strip color
     def changeColor(color):
@@ -127,8 +127,8 @@ def main():
             value = float(msg.payload)
             input = stripStorage
             print(input)
-            for i in input:
-                i = (i[0],i[0],i[0],i[0],value)
+            for i in range(len(input)):
+                input[i] = (input[i][0],input[i][1],input[i][2],input[i][3],value)
             print(value)
             print(input)
             fadeStrip(input)
