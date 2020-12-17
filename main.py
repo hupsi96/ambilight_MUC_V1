@@ -89,6 +89,9 @@ def main():
                 currentCopy[j] = (stripNew[0],stripNew[1],stripNew[2],stripNew[3],stripNew[4])
             strip.show()
             time.sleep(0.01)
+        print("input:")
+        print(input)
+        print("current")
         print(currentCopy)
         
     #change strip color
