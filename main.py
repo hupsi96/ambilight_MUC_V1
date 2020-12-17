@@ -88,6 +88,7 @@ def main():
                 strip[j] = (int(stripNew[0]*(stripNew[4]/255.0)),int(stripNew[1]*(stripNew[4]/255.0)),int(stripNew[2]*(stripNew[4]/255.0)),int(stripNew[3]*(stripNew[4]/255.0)))
                 currentCopy[j] = (stripNew[0],stripNew[1],stripNew[2],stripNew[3],stripNew[4])
             strip.show()
+            print(currentCopy)
             time.sleep(0.01)
         
     #change strip color
